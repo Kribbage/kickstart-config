@@ -1,5 +1,6 @@
 --[[
 
+
 =====================================================================
 ==================== READ THIS BEFORE CONTINUING ====================
 =====================================================================
@@ -232,8 +233,9 @@ vim.opt.rtp:prepend(lazypath)
 -- NOTE: Here is where you install your plugins.
 require('lazy').setup({
   -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
-  'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
-
+  'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automaticall
+  'voldikss/vim-floaterm',
+  'nvim-telescope/telescope-file-browser.nvim',
   -- NOTE: Plugins can also be added by using a table,
   -- with the first argument being the link and the following
   -- keys can be used to configure plugin behavior/loading/etc.
@@ -244,9 +246,9 @@ require('lazy').setup({
   --    require('Comment').setup({})
 
   -- "gc" to comment visual regions/lines
-  { 'numToStr/Comment.nvim',                      opts = {} },
-  { 'nvim-telescope/telescope-file-browser.nvim', dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }, opts = {} },
-  { 'voldikss/vim-floaterm',                      opts = {} },
+  { 'numToStr/Comment.nvim',    opts = {} },
+  --  { 'nvim-telescope/telescope-file-browser.nvim', dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }, opts = {} },
+  -- { 'voldikss/vim-floaterm', opts = {} },
   -- Here is a more advanced example where we pass configuration
   -- options to `gitsigns.nvim`. This is equivalent to the following Lua:
   --    require('gitsigns').setup({ ... })
