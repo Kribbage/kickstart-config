@@ -93,9 +93,11 @@ vim.g.maplocalleader = ' '
 
 -- Set to true if you have a Nerd Font installed and selected in the terminal
 vim.g.have_nerd_font = false
-
+vim.opt.termguicolors = true
 -- [[ Setting options ]]
--- See `:help vim.opt`
+-- See `:help vim.opt
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
 -- NOTE: You can change these options as you wish!
 --  For more options, you can see `:help option-list`
 
@@ -165,15 +167,16 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic message' })
-vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagnostic [E]rror messages' })
+vim.keymap.set('n', '<leader>ee', vim.diagnostic.open_float, { desc = 'Show diagnostic [E]rror messages' })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 vim.keymap.set('n', '<Leader>[', ':tabprev<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<Leader>]', ':tabnext<CR>', { noremap = true, silent = true })
 vim.keymap.set("n", "<Leader>fb", ':Telescope file_browser path=%:p:h select_buffer=true<CR>')
-vim.keymap.set("n", '<Leader>ftn', ':FloatermNew')
-vim.keymap.set("n", '<Leader>ftt', ':FloatermToggle')
-vim.keymap.set("n", '<Leader>ftk', ':FloatermKill')
-
+vim.keymap.set("n", '<Leader>ftn', ':FloatermNew<CR>', { noremap = true, silent = true })
+vim.keymap.set("n", '<Leader>ftt', ':FloatermToggle<CR>', { noremap = true, silent = true })
+vim.keymap.set("n", '<Leader>ftk', ':FloatermKill<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<Leader>tn', ':tabnew<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<Leader>ex', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
 -- is not what someone will guess without a bit more experience.
@@ -236,6 +239,7 @@ require('lazy').setup({
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automaticall
   'voldikss/vim-floaterm',
   'nvim-telescope/telescope-file-browser.nvim',
+  'nvim-tree/nvim-tree.lua',
   -- NOTE: Plugins can also be added by using a table,
   -- with the first argument being the link and the following
   -- keys can be used to configure plugin behavior/loading/etc.
@@ -899,6 +903,6 @@ require('lazy').setup({
     },
   },
 })
-
+require("nvim-tree").setup()
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
